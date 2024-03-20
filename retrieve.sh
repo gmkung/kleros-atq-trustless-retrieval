@@ -8,7 +8,7 @@ SUBMODULES_DIR="submodules"
 RESPONSE='[
   {
     "url": "https://github.com/gmkung/atq-sample-submodule.git",
-    "commit": "38d1fda"
+    "commit": "007cfac"
   }
 ]'
 
@@ -58,7 +58,7 @@ for line in $(echo $RESPONSE | jq -r '.[] | "\(.url) \(.commit)"'); do
   fi
 
   # Return to the main project directory
-  cd - 
+  cd -
 done
 
 # Restore IFS and commit the changes
