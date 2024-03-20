@@ -48,7 +48,7 @@ for line in $(echo $RESPONSE | jq -r '.[] | "\(.url) \(.commit)"'); do
 
   # Add the submodule and check out the specified commit
   echo "Adding and checking out $DIR_NAME..."
-  git submodule add $URL $SUBMODULES_DIR/$DIR_NAME
+  git submodule add -f $URL $SUBMODULES_DIR/$DIR_NAME #using -f to ignore the .gitignore
   cd $SUBMODULES_DIR/$DIR_NAME
   git checkout $COMMIT
 
@@ -60,8 +60,3 @@ for line in $(echo $RESPONSE | jq -r '.[] | "\(.url) \(.commit)"'); do
   # Return to the main project directory
   cd -
 done
-
-# Restore IFS and commit the changes
-IFS=$OLD_IFS
-git add $SUBMODULES_DIR
-git commit -m "Updated submodules to specific commits"
