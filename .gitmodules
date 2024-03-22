@@ -1,0 +1,6 @@
+[submodule "submodules/atq-sample-submodule"]
+	path = submodules/atq-sample-submodule
+	url = https://github.com/gmkung/atq-sample-submodule.git
+[submodule "submodules/atq-sample-submodule2"]
+	path = submodules/atq-sample-submodule2
+	url = https://github.com/gmkung/atq-sample-submodule2.git

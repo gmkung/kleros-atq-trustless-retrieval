@@ -8,7 +8,11 @@ SUBMODULES_DIR="submodules"
 RESPONSE='[
   {
     "url": "https://github.com/gmkung/atq-sample-submodule.git",
-    "commit": "007cfac"
+    "commit": "70a99ff"
+  },
+    {
+    "url": "https://github.com/gmkung/atq-sample-submodule2.git",
+    "commit": "507d17e" 
   }
 ]'
 
