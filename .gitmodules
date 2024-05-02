@@ -1,0 +1,3 @@
+[submodule "submodules/uniswap-v3-pools-atq-module"]
+	path = submodules/uniswap-v3-pools-atq-module
+	url = https://github.com/gmkung/uniswap-v3-pools-atq-module.git

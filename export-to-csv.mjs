@@ -3,6 +3,10 @@ import { readdir } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
+//Using a .env file for local development
+import dotenv from 'dotenv';
+dotenv.config();
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SUBMODULES_DIR = join(__dirname, "submodules");
 
@@ -32,14 +36,13 @@ async function fetchAndProcessSubmodules() {
         SUBMODULES_DIR,
         submodule,
         "dist",
-        "src",
-        "index.mjs"
+        "main.mjs"
       );
       try {
         const submoduleImport = await import(modulePath);
         const tags = await submoduleImport.returnTags(
           "1",
-          "A20CharacterApiKeyThatWorks"
+          process.env.THEGRAPH_API_KEY
         );
         if (Array.isArray(tags)) {
           allTags = allTags.concat(tags);

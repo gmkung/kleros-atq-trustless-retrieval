@@ -16,6 +16,8 @@ Clone this repository and navigate to the directory where the repository has bee
 
 ## Setting Up and Running the Scripts
 
+0. Create a .env file locally with the The Graph's API Key under the variable ```THEGRAPH_API_KEY```.
+
 1. **Make the Retrieve Script Executable**:  
    The `retrieve.sh` script is used to fetch submodule information and update them accordingly. First, you need to change the permissions of the script to make it executable. Run the following command in your terminal:
 
@@ -32,5 +34,11 @@ This script will clone or pull the submodules and ensure they are checked out to
 After updating the submodules, run the export-to-csv.mjs script to process the submodule data and export the tags to a CSV file. Execute the script using Node.js:
 
 ```node export-to-csv.mjs```
+
+For outputting the data in the format that Etherscan requires, use:
+
+```node export-to-csv-etherscan.mjs```
+
+
 
 This will aggregate data from the submodules and generate a tags.csv file in the current directory.
