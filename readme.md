@@ -32,13 +32,9 @@ This script will clone or pull the submodules and ensure they are checked out to
 
 3. **Export Tags to CSV:**
 After updating the submodules, run the export-to-csv.mjs script to process the submodule data and export the tags to a CSV file. Execute the script using Node.js:
-
 ```node export-to-csv.mjs```
+This will aggregate data from the submodules and generate a tags.csv file in the current directory.
 
 For outputting the data in the format that Etherscan requires, use:
-
 ```node export-to-csv-etherscan.mjs```
-
-
-
-This will aggregate data from the submodules and generate a tags.csv file in the current directory.
+which will generate a tags-etherscan.csv file.
