@@ -1,5 +1,4 @@
 .gitmodules
 submodules/
-*.csv
 .env
 error.txt
