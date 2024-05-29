@@ -1,0 +1,17 @@
+{
+  "name": "kleros-atq-trustless-retrieval-script",
+  "version": "1.0.0",
+  "description": "A module to trustlessly retrieve ATQ data",
+  "main": "export-to-csv-etherscanv2.mjs",
+  "scripts": {
+    "build": "tsc --project ./tsconfig.json",
+    "start": "node dist/src/3_export-to-csv-etherscan-v2.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "license": "MIT"
+}

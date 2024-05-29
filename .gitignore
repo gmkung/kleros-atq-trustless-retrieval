@@ -2,3 +2,4 @@
 submodules/
 *.csv
 .env
+error.txt
