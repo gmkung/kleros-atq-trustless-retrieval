@@ -40,3 +40,7 @@ which will generate a tags-etherscan.csv file.
 If you just want to repeat the pull of all the modules and data again, combine all steps together with:
 
 ```./1_fetch.sh && ./2_pull_submodules.sh && yarn build && yarn start```
+
+4. **Counting number of entries**
+If you want to find out the total number of contract tags that were retrieved by all the approved ATQ entries, run this (at the root directory).
+```find ./dist/exports -name "*.csv" -type f -exec sh -c 'total=0; for file do count=$(grep -c "" "$file"); echo "$file: $count lines"; total=$((total + count)); done; echo "Total: $total lines"' sh {} + ```
