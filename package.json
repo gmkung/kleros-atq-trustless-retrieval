@@ -5,10 +5,14 @@
   "main": "export-to-csv-etherscanv2.mjs",
   "scripts": {
     "build": "tsc --project ./tsconfig.json",
-    "start": "node dist/src/3_export-to-csv-etherscan-v2.mjs"
+    "start": "node dist/src/3_export-to-csv-etherscan-v2.mjs",
+    "merge": "node dist/src/4_combine_CSVs.mjs"
   },
   "dependencies": {
-    "dotenv": "^10.0.0"
+    "@types/papaparse": "^5.3.14",
+    "dotenv": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "papaparse": "^5.4.1"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
