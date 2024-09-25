@@ -8,7 +8,7 @@ dotenv.config();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SUBMODULES_DIR = join(__dirname, "../../submodules");
 const DATA_FILE = join(__dirname, "../../data.json");
-const EXPORTS_DIR = join(__dirname, "../../exports");
+const EXPORTS_DIR = join(__dirname, "../exports");
 
 interface SubmoduleData {
   url: string;
