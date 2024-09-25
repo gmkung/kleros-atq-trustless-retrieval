@@ -1,7 +1,12 @@
 #!/bin/bash
 # Fetch data from The Graph API and store it in data.json
 
-API_ENDPOINT="https://gateway-arbitrum.network.thegraph.com/api/f69cafa505f7915fe73291100cc4c48a/deployments/id/QmevWPSB6PYKWrQCfD52nNtgYoFN4cRA3Dq2MjMjyu9Q9L"
+# Load environment variables from .env file
+if [ -f .env ]; then
+  export $(cat .env | xargs)
+fi
+
+API_ENDPOINT="https://gateway-arbitrum.network.thegraph.com/api/${THEGRAPH_API_KEY}/deployments/id/QmevWPSB6PYKWrQCfD52nNtgYoFN4cRA3Dq2MjMjyu9Q9L"
 QUERY='{"query":"{litems(where:{registry:\"0xae6aaed5434244be3699c56e7ebc828194f26dc3\"}){itemID status key0 key1 key2}}"}'
 DATA_FILE="data.json"
 

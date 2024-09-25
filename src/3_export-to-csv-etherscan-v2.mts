@@ -8,6 +8,7 @@ dotenv.config();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SUBMODULES_DIR = join(__dirname, "../../submodules");
 const DATA_FILE = join(__dirname, "../../data.json");
+const EXPORTS_DIR = join(__dirname, "../../exports");
 
 interface SubmoduleData {
   url: string;
@@ -100,6 +101,9 @@ async function fetchAndProcessSubmodules() {
       await fs.readFile(DATA_FILE, "utf-8")
     );
 
+    // Ensure the exports directory exists
+    await fs.mkdir(EXPORTS_DIR, { recursive: true });
+
     for (const { url, commit, chainId } of data) {
       const DIR_NAME = `${basename(url, ".git")}-${commit}`;
       const modulePath = join(SUBMODULES_DIR, DIR_NAME, "dist", "main.mjs");
@@ -114,7 +118,7 @@ async function fetchAndProcessSubmodules() {
           const csv = jsonToCSV(tags, url, commit);
           console.log(__dirname);
           const fileName = `tags-export(${commit}-${chainId}).csv`;
-          await fs.writeFile(join(__dirname + "../../exports", fileName), csv);
+          await fs.writeFile(join(EXPORTS_DIR, fileName), csv);
 
           console.log(`Tags have been written to ${fileName}`);
         }
