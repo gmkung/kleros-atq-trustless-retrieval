@@ -6,8 +6,8 @@ if [ -f .env ]; then
   export $(cat .env | xargs)
 fi
 
-#API_ENDPOINT="https://gateway-arbitrum.network.thegraph.com/api/${THEGRAPH_API_KEY}/deployments/id/QmevWPSB6PYKWrQCfD52nNtgYoFN4cRA3Dq2MjMjyu9Q9L"
-API_ENDPOINT="https://api.studio.thegraph.com/query/61738/legacy-curate-gnosis/version/latest"
+API_ENDPOINT="https://gateway-arbitrum.network.thegraph.com/api/${THEGRAPH_API_KEY}/deployments/id/QmeregtvXdwydExdwVBs5YEwNV4HC1DKqQoyRgTbkbvFA7"
+#API_ENDPOINT="https://api.studio.thegraph.com/query/61738/legacy-curate-gnosis/version/latest"
 QUERY='{
   "query": "{ litems(first: 1000, skip: 0, orderBy: latestRequestSubmissionTime, where: {status: Registered, registryAddress: \"0xae6aaed5434244be3699c56e7ebc828194f26dc3\"}) { itemID metadata { props { type label value } } } }"
 }'
