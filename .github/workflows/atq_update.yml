@@ -21,8 +21,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16' # Use the required Node.js version
-          cache: 'yarn'
+          node-version: "16" # Use the required Node.js version
+          cache: "yarn"
 
       # Step 3: Install Yarn dependencies
       - name: Install Dependencies
@@ -41,10 +41,14 @@ jobs:
       # Step 6: Run scripts to fetch and pull submodules
       - name: Run Fetch and Pull Scripts
         run: ./1_fetch.sh && ./2_pull_submodules.sh
+        env:
+          THEGRAPH_API_KEY: ${{ secrets.THEGRAPH_API_KEY }}
 
       # Step 7: Build and generate CSV files
       - name: Generate CSV Files
         run: yarn build && yarn start
+        env:
+          THEGRAPH_API_KEY: ${{ secrets.THEGRAPH_API_KEY }}
 
       # Step 8: Add workflow marker (optional, for extra security)
       - name: Add Workflow Marker
