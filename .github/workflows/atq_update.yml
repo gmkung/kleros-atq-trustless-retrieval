@@ -9,6 +9,9 @@ on:
 jobs:
   automate_atq_process:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed for pushing changes
+      pull-requests: write # If you need to create PRs
 
     steps:
       # Step 1: Check out the repository with submodules
@@ -67,7 +70,7 @@ jobs:
             echo "No workflow marker found, skipping commit."
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ATQ_WORKFLOW_PAT_TOKEN }}
 
       # Step 10: Count the total number of entries in the CSV files (optional)
       - name: Count CSV Entries
