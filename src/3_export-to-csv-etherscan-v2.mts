@@ -101,10 +101,16 @@ async function fetchAndProcessSubmodules() {
       await fs.readFile(DATA_FILE, "utf-8")
     );
 
-    // Ensure the exports directory exists
     await fs.mkdir(EXPORTS_DIR, { recursive: true });
 
     for (const { url, commit, chainId } of data) {
+      try {
+        new URL(url);
+      } catch (e) {
+        console.log(`Invalid URL format: ${url} - skipping...`);
+        continue;
+      }
+
       const DIR_NAME = `${basename(url, ".git")}-${commit}`;
       const modulePath = join(SUBMODULES_DIR, DIR_NAME, "dist", "main.mjs");
 
@@ -114,6 +120,7 @@ async function fetchAndProcessSubmodules() {
           chainId.toString(),
           process.env.THEGRAPH_API_KEY
         );
+        console.log("Tags: ", tags)
         if (Array.isArray(tags) && tags.length > 0) {
           const csv = jsonToCSV(tags, url, commit);
           console.log(__dirname);
@@ -123,7 +130,21 @@ async function fetchAndProcessSubmodules() {
           console.log(`Tags have been written to ${fileName}`);
         }
       } catch (error) {
-        console.error(`Error in processing submodule ${DIR_NAME}:`, error);
+        console.error(`Error in processing submodule ${DIR_NAME}:`);
+        if (error instanceof Error) {
+          console.error("Error name:", error.name);
+          console.error("Error message:", error.message);
+          console.error("Stack trace:", error.stack);
+        }
+        if (typeof error === "object" && error !== null) {
+          console.error(
+            "Full error object:",
+            JSON.stringify(error, Object.getOwnPropertyNames(error))
+          );
+        }
+        if (typeof error === "object" && error !== null && "response" in error) {
+          console.error("Error response:", JSON.stringify(error.response));
+        }
       }
     }
   } catch (error) {

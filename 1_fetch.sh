@@ -7,7 +7,7 @@ if [ -f .env ]; then
 fi
 
 API_ENDPOINT="https://gateway-arbitrum.network.thegraph.com/api/${THEGRAPH_API_KEY}/deployments/id/QmevWPSB6PYKWrQCfD52nNtgYoFN4cRA3Dq2MjMjyu9Q9L"
-QUERY='{"query":"{litems(where:{registry:\"0xae6aaed5434244be3699c56e7ebc828194f26dc3\"}){itemID status key0 key1 key2}}"}'
+QUERY='{"query":"{litems(where:{status_in:[Registered], registry:\"0xae6aaed5434244be3699c56e7ebc828194f26dc3\"}){itemID status key0 key1 key2}}"}'
 DATA_FILE="data.json"
 
 # Use curl to execute GraphQL query

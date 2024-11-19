@@ -34,15 +34,34 @@ fi
 jq -c '.[]' $DATA_FILE | while IFS=$'\n' read -r line; do
     URL=$(echo $line | jq -r '.url')
     COMMIT=$(echo $line | jq -r '.commit')
+
+    # Validate URL format
+    if [[ ! $URL =~ ^https?:// ]]; then
+        echo "Invalid URL format: $URL - skipping..."
+        continue
+    fi
+
     DIR_NAME=$(basename $URL .git)-$COMMIT
 
     echo "Adding and checking out $DIR_NAME..."
-    git submodule add -f $URL $SUBMODULES_DIR/$DIR_NAME
-    cd $SUBMODULES_DIR/$DIR_NAME
-    git checkout $COMMIT
+    if ! git submodule add -f $URL $SUBMODULES_DIR/$DIR_NAME; then
+        echo "Failed to add submodule for $URL - skipping..."
+        continue
+    fi
+
+    cd $SUBMODULES_DIR/$DIR_NAME || {
+        echo "Failed to change directory to $SUBMODULES_DIR/$DIR_NAME - skipping..."
+        continue
+    }
+
+    if ! git checkout $COMMIT; then
+        echo "Failed to checkout commit $COMMIT - skipping..."
+        cd - >/dev/null
+        continue
+    fi
 
     if [ -f "package.json" ]; then
         yarn install && yarn build
     fi
-    cd -
+    cd - >/dev/null
 done
