@@ -1,6 +1,7 @@
 name: Monthly Address Tags Query Automation
 
 on:
+  workflow_dispatch:
   schedule:
     # Run at 12:00 AM UTC on the first day of every month
     - cron: "0 0 1 * *"
