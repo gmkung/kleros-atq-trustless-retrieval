@@ -1,1 +1,7 @@
 Error detected: "Type `LItem` has no field `key0`" "Type `LItem` has no field `key1`" "Type `LItem` has no field `key2`"
+Error detected:
+Error detected:
+Error detected:
+Error detected:
+Error detected:
+Error detected:

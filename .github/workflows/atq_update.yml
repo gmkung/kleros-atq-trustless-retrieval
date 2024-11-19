@@ -60,7 +60,7 @@ jobs:
           if [ -f .workflow_generated ]; then
             git config --global user.name "GitHub Actions"
             git config --global user.email "actions@github.com"
-            git add dist/exports/*.csv
+            git add -f dist/exports/*.csv
             git commit -m "Monthly update: Generated CSV files [skip ci]"
             git push
           else
@@ -72,4 +72,16 @@ jobs:
       # Step 10: Count the total number of entries in the CSV files (optional)
       - name: Count CSV Entries
         run: |
-          find ./dist/exports -name "*.csv" -type f -exec sh -c 'total=0; for file do count=$(grep -c "" "$file"); echo "$file: $count lines"; total=$((total + count)); done; echo "Total: $total lines"' sh {} +
+          find ./dist/exports -name "*.csv" -type f -exec sh -c '
+            echo "Count performed at $(date "+%Y-%m-%d %H:%M:%S %Z")" > count_report.txt
+            total=0
+            for file do 
+              count=$(grep -c "" "$file")
+              echo "$file: $count lines" | tee -a count_report.txt
+              total=$((total + count))
+            done
+            echo "Total: $total lines" | tee -a count_report.txt
+          ' sh {} +
+          git add count_report.txt
+          git commit -m "Update count report [skip ci]"
+          git push
