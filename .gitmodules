@@ -25,3 +25,9 @@
 [submodule "submodules/aave-v2-tokens-atq-module-5de800f"]
 	path = submodules/aave-v2-tokens-atq-module-5de800f
 	url = https://github.com/greentea135/aave-v2-tokens-atq-module.git
+[submodule "submodules/uniswap-v3-pools-atq-module-50c7a12"]
+	path = submodules/uniswap-v3-pools-atq-module-50c7a12
+	url = https://github.com/gmkung/uniswap-v3-pools-atq-module.git
+[submodule "submodules/eigenpie-tokens-atq-module-9e13d1b"]
+	path = submodules/eigenpie-tokens-atq-module-9e13d1b
+	url = https://github.com/greentea135/eigenpie-tokens-atq-module.git
