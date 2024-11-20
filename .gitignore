@@ -3,4 +3,5 @@ submodules/
 .env
 error.txt
 dist/
+logs/
 !exports/

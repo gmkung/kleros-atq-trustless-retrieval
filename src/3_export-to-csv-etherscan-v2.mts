@@ -9,6 +9,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const SUBMODULES_DIR = join(__dirname, "../../submodules");
 const DATA_FILE = join(__dirname, "../../data.json");
 const EXPORTS_DIR = join(__dirname, "../exports");
+const LOGS_DIR = join(__dirname, "../logs");
 
 interface SubmoduleData {
   url: string;
@@ -22,6 +23,13 @@ interface Tag {
   "Public Name Tag": string;
   "UI/Website Link": string;
   "Public Note": string;
+}
+
+interface FailedSubmodule {
+  chainId: number;
+  commit: string;
+  dir: string;
+  error: string;
 }
 
 function chainIdToExplorer(chainId: number): string {
@@ -102,12 +110,23 @@ async function fetchAndProcessSubmodules() {
     );
 
     await fs.mkdir(EXPORTS_DIR, { recursive: true });
+    await fs.mkdir(LOGS_DIR, { recursive: true });
+
+    const failedSubmodules: FailedSubmodule[] = [];
 
     for (const { url, commit, chainId } of data) {
       try {
         new URL(url);
       } catch (e) {
         console.log(`Invalid URL format: ${url} - skipping...`);
+        failedSubmodules.push({
+          chainId,
+          commit,
+          dir: url,
+          error: `Invalid URL format: ${
+            e instanceof Error ? e.message : String(e)
+          }`,
+        });
         continue;
       }
 
@@ -120,7 +139,7 @@ async function fetchAndProcessSubmodules() {
           chainId.toString(),
           process.env.THEGRAPH_API_KEY
         );
-        console.log("Tags: ", tags)
+        console.log("Tags: ", tags);
         if (Array.isArray(tags) && tags.length > 0) {
           const csv = jsonToCSV(tags, url, commit);
           console.log(__dirname);
@@ -142,11 +161,41 @@ async function fetchAndProcessSubmodules() {
             JSON.stringify(error, Object.getOwnPropertyNames(error))
           );
         }
-        if (typeof error === "object" && error !== null && "response" in error) {
+        if (
+          typeof error === "object" &&
+          error !== null &&
+          "response" in error
+        ) {
           console.error("Error response:", JSON.stringify(error.response));
         }
+        failedSubmodules.push({
+          chainId,
+          commit,
+          dir: DIR_NAME,
+          error:
+            error instanceof Error
+              ? `${error.name}: ${error.message}`
+              : `Unknown error: ${JSON.stringify(error)}`,
+        });
       }
     }
+
+    const date = new Date().toISOString().replace(/[:.]/g, '-').split('T').join('_');
+    const logFile = join(LOGS_DIR, `submodules-report-${date}.json`);
+    await fs.writeFile(
+      logFile,
+      JSON.stringify(
+        {
+          timestamp: new Date().toISOString(),
+          totalProcessed: data.length,
+          failedCount: failedSubmodules.length,
+          failures: failedSubmodules,
+        },
+        null,
+        2
+      )
+    );
+    console.log(`Processing report has been logged to ${logFile}`);
   } catch (error) {
     console.error("Error in fetchAndProcessSubmodules:", error);
   }
