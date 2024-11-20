@@ -180,7 +180,11 @@ async function fetchAndProcessSubmodules() {
       }
     }
 
-    const date = new Date().toISOString().replace(/[:.]/g, '-').split('T').join('_');
+    const date = new Date()
+      .toISOString()
+      .replace(/[:.]/g, "-")
+      .split("T")
+      .join("_");
     const logFile = join(LOGS_DIR, `submodules-report-${date}.json`);
     await fs.writeFile(
       logFile,
