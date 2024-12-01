@@ -1,3 +1,6 @@
+[submodule "submodules/uniswap-v3-pools-atq-module-50c7a12"]
+	path = submodules/uniswap-v3-pools-atq-module-50c7a12
+	url = https://github.com/gmkung/uniswap-v3-pools-atq-module.git
 [submodule "submodules/uniswap-v3-pools-atq-module-c8baafd"]
 	path = submodules/uniswap-v3-pools-atq-module-c8baafd
 	url = https://github.com/gmkung/uniswap-v3-pools-atq-module.git
@@ -19,15 +22,18 @@
 [submodule "submodules/aave-v3-tokens-atq-module-ca6428f"]
 	path = submodules/aave-v3-tokens-atq-module-ca6428f
 	url = https://github.com/greentea135/aave-v3-tokens-atq-module.git
+[submodule "submodules/eigenpie-tokens-atq-module-9e13d1b"]
+	path = submodules/eigenpie-tokens-atq-module-9e13d1b
+	url = https://github.com/greentea135/eigenpie-tokens-atq-module.git
 [submodule "submodules/aave-v3-tokens-atq-module-8174f03"]
 	path = submodules/aave-v3-tokens-atq-module-8174f03
 	url = https://github.com/greentea135/aave-v3-tokens-atq-module.git
 [submodule "submodules/aave-v2-tokens-atq-module-5de800f"]
 	path = submodules/aave-v2-tokens-atq-module-5de800f
 	url = https://github.com/greentea135/aave-v2-tokens-atq-module.git
-[submodule "submodules/uniswap-v3-pools-atq-module-50c7a12"]
-	path = submodules/uniswap-v3-pools-atq-module-50c7a12
-	url = https://github.com/gmkung/uniswap-v3-pools-atq-module.git
-[submodule "submodules/eigenpie-tokens-atq-module-9e13d1b"]
-	path = submodules/eigenpie-tokens-atq-module-9e13d1b
-	url = https://github.com/greentea135/eigenpie-tokens-atq-module.git
+[submodule "submodules/silo-atq-module-36ad7ca"]
+	path = submodules/silo-atq-module-36ad7ca
+	url = https://github.com/greentea135/silo-atq-module.git
+[submodule "submodules/stargate-v1-pools-atq-module-0875321"]
+	path = submodules/stargate-v1-pools-atq-module-0875321
+	url = https://github.com/greentea135/stargate-v1-pools-atq-module.git
