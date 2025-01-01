@@ -37,3 +37,6 @@
 [submodule "submodules/stargate-v1-pools-atq-module-0875321"]
 	path = submodules/stargate-v1-pools-atq-module-0875321
 	url = https://github.com/greentea135/stargate-v1-pools-atq-module.git
+[submodule "submodules/compound-v2-tokens-atq-module-414c23a"]
+	path = submodules/compound-v2-tokens-atq-module-414c23a
+	url = https://github.com/greentea135/compound-v2-tokens-atq-module.git
