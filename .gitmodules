@@ -40,3 +40,12 @@
 [submodule "submodules/compound-v2-tokens-atq-module-414c23a"]
 	path = submodules/compound-v2-tokens-atq-module-414c23a
 	url = https://github.com/greentea135/compound-v2-tokens-atq-module.git
+[submodule "submodules/karak-tokens-atq-module-02efa78"]
+	path = submodules/karak-tokens-atq-module-02efa78
+	url = https://github.com/greentea135/karak-tokens-atq-module.git
+[submodule "submodules/moonwell-tokens-atq-module-bf996a1"]
+	path = submodules/moonwell-tokens-atq-module-bf996a1
+	url = https://github.com/greentea135/moonwell-tokens-atq-module.git
+[submodule "submodules/zerolend-tokens-atq-module-86f12cd"]
+	path = submodules/zerolend-tokens-atq-module-86f12cd
+	url = https://github.com/greentea135/zerolend-tokens-atq-module.git
