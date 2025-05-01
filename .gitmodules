@@ -58,3 +58,18 @@
 [submodule "submodules/amphor-tokens-atq-module-3a07c3f"]
 	path = submodules/amphor-tokens-atq-module-3a07c3f
 	url = https://github.com/greentea135/amphor-tokens-atq-module.git
+[submodule "submodules/seamless-tokens-atq-module-77c82a8"]
+	path = submodules/seamless-tokens-atq-module-77c82a8
+	url = https://github.com/greentea135/seamless-tokens-atq-module.git
+[submodule "submodules/seismic-tokens-atq-module-bf7bd2f"]
+	path = submodules/seismic-tokens-atq-module-bf7bd2f
+	url = https://github.com/greentea135/seismic-tokens-atq-module.git
+[submodule "submodules/camelot-v3-pools-atq-module-45bf2d0"]
+	path = submodules/camelot-v3-pools-atq-module-45bf2d0
+	url = https://github.com/greentea135/camelot-v3-pools-atq-module.git
+[submodule "submodules/camelot-v4-pools-atq-module-3be5dfc"]
+	path = submodules/camelot-v4-pools-atq-module-3be5dfc
+	url = https://github.com/greentea135/camelot-v4-pools-atq-module.git
+[submodule "submodules/pancakeswap-v3-pools-atq-module-bf4c41a"]
+	path = submodules/pancakeswap-v3-pools-atq-module-bf4c41a
+	url = https://github.com/greentea135/pancakeswap-v3-pools-atq-module.git
