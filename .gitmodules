@@ -73,3 +73,15 @@
 [submodule "submodules/pancakeswap-v3-pools-atq-module-bf4c41a"]
 	path = submodules/pancakeswap-v3-pools-atq-module-bf4c41a
 	url = https://github.com/greentea135/pancakeswap-v3-pools-atq-module.git
+[submodule "submodules/curve-pools-atq-module-9807dbc"]
+	path = submodules/curve-pools-atq-module-9807dbc
+	url = https://github.com/greentea135/curve-pools-atq-module.git
+[submodule "submodules/curve-pools-atq-module-82d4c58"]
+	path = submodules/curve-pools-atq-module-82d4c58
+	url = https://github.com/greentea135/curve-pools-atq-module.git
+[submodule "submodules/venus-v4-core-atq-module-d2c4594"]
+	path = submodules/venus-v4-core-atq-module-d2c4594
+	url = https://github.com/greentea135/venus-v4-core-atq-module.git
+[submodule "submodules/pancakeswap-v2-pools-atq-module-17f14ad"]
+	path = submodules/pancakeswap-v2-pools-atq-module-17f14ad
+	url = https://github.com/greentea135/pancakeswap-v2-pools-atq-module.git
